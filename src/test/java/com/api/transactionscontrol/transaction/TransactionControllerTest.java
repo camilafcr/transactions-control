@@ -1,29 +1,14 @@
 package com.api.transactionscontrol.transaction;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.api.transactionscontrol.account.Account;
-import com.api.transactionscontrol.account.AccountController;
-import com.api.transactionscontrol.account.AccountMapper;
-import com.api.transactionscontrol.account.AccountRepository;
-import com.api.transactionscontrol.account.AccountRequest;
 import com.api.transactionscontrol.operationtype.OperationType;
 import com.api.transactionscontrol.operationtype.OperationTypeEnum;
-import com.api.transactionscontrol.operationtype.OperationTypeRepository;
-import com.api.transactionscontrol.transaction.InvalidTransactionException;
-import com.api.transactionscontrol.transaction.Transaction;
-import com.api.transactionscontrol.transaction.TransactionController;
-import com.api.transactionscontrol.transaction.TransactionMapper;
-import com.api.transactionscontrol.transaction.TransactionRepository;
-import com.api.transactionscontrol.transaction.TransactionRequest;
-import com.api.transactionscontrol.transaction.TransactionService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 import org.springframework.beans.factory.annotation.Autowired;

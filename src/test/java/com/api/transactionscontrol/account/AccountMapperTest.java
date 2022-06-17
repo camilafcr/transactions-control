@@ -2,9 +2,6 @@ package com.api.transactionscontrol.account;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.api.transactionscontrol.account.Account;
-import com.api.transactionscontrol.account.AccountMapper;
-import com.api.transactionscontrol.account.AccountRequest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
