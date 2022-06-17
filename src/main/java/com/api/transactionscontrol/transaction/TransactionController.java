@@ -1,7 +1,5 @@
 package com.api.transactionscontrol.transaction;
 
-import com.api.transactionscontrol.account.AccountNotFoundException;
-import com.api.transactionscontrol.operationtype.OperationTypeNotFoundException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import javax.validation.Valid;
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -26,6 +25,7 @@ public class TransactionController {
   private TransactionMapper transactionMapper;
 
   @PostMapping
+  @ResponseStatus(HttpStatus.CREATED)
   @ApiOperation(value="Create a new transaction.")
   public Transaction newTransaction(@RequestBody @Valid TransactionRequest request) {
     return transactionService.createTransaction(transactionMapper.mapDtoToEntity(request));

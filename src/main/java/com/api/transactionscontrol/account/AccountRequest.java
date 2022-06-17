@@ -9,4 +9,8 @@ public class AccountRequest {
   public Integer getDocumentNumber() {
     return documentNumber;
   }
+
+  public void setDocumentNumber(Integer documentNumber) {
+    this.documentNumber = documentNumber;
+  }
 }

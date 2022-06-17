@@ -25,4 +25,16 @@ public class TransactionRequest {
   public BigDecimal getAmount() {
     return amount;
   }
+
+  public void setAccountId(Integer accountId) {
+    this.accountId = accountId;
+  }
+
+  public void setOperationTypeId(Integer operationTypeId) {
+    this.operationTypeId = operationTypeId;
+  }
+
+  public void setAmount(BigDecimal amount) {
+    this.amount = amount;
+  }
 }

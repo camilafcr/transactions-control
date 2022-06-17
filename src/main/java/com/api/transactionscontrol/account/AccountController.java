@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -26,6 +27,7 @@ public class AccountController {
   private AccountMapper accountMapper;
 
   @ApiOperation(value="Create an account for a client.")
+  @ResponseStatus(HttpStatus.CREATED)
   @PostMapping
   public Account createAccount(@RequestBody @Valid AccountRequest request) {
     return accountRepository.save(accountMapper.mapDtoToEntity(request));
