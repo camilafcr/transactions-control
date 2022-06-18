@@ -1,9 +1,16 @@
 version: "3"
 services:
+  application:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    image: transaction-control-application
+    container_name: "transaction-control-application"
+    ports:
+      - 8080:8080
   database:
     image: postgres
-    restart: always
-    container_name: "transaction-control-db"
+    container_name: "transactions-control-db"
     environment:
       - POSTGRES_PASSWORD=sql
     volumes:
