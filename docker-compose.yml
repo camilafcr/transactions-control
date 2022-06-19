@@ -8,7 +8,8 @@ services:
     container_name: "transaction-control-application"
     ports:
       - 8080:8080
-    links:
+    restart: on-failure
+    depends_on:
       - database
   database:
     image: postgres
