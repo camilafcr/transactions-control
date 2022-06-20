@@ -20,6 +20,19 @@ public class TransactionServiceTest {
   private TransactionService transactionService;
 
   @Test
+  public void shouldThrowInvalidTransactionExceptionWhenAmountIsEqualZero() {
+    OperationType operationType = new OperationType();
+    operationType.setId(OperationTypeEnum.PAGAMENTO.getOperationTypeId());
+    operationType.setDescription(OperationTypeEnum.PAGAMENTO.name());
+
+    InvalidTransactionException exception = assertThrows(
+        InvalidTransactionException.class, () -> transactionService
+            .createTransaction(buildTransaction(operationType, BigDecimal.ZERO)));
+
+    assertEquals("Transaction Invalid. Cause: Amount must be different from '0'.", exception.getMessage());
+  }
+
+  @Test
   public void shouldThrowInvalidTransactionExceptionWhenOperationIsNotPositive() {
     OperationType operationType = new OperationType();
     operationType.setId(OperationTypeEnum.PAGAMENTO.getOperationTypeId());
