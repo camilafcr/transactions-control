@@ -5,7 +5,7 @@
 ## 2. Executando a aplicação
 ### Requisitos:
 ### * Docker - Para download, acessar: https://www.docker.com/get-started/
-### * Maven - Para download, acessar: https://maven.apache.org/download.cgi
+### * Maven - Para download e passos para configuração, acessar: https://maven.apache.org/
 #### Seguir os passos abaixo:
 #### 1) Faça a cópia dos arquivos para sua máquina.
 #### 2) Abra o prompt de comando, e navegue até a pasta raiz da aplicação (transactions-control).
