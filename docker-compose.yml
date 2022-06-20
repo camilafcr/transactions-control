@@ -1,4 +1,4 @@
-version: "3"
+version: "2"
 services:
   application:
     build:
@@ -10,12 +10,15 @@ services:
       - 8080:8080
     restart: on-failure
     depends_on:
-      - database
+      database:
+        condition: service_healthy
   database:
     image: postgres
     container_name: "transactions-control-db"
     environment:
       - POSTGRES_PASSWORD=sql
+    healthcheck:
+      test: pg_isready -U postgres
     volumes:
       - "./data/postgres:/var/lib/postgresql/data"
       - "./database-scripts/scripts.sql:/docker-entrypoint-initdb.d/scripts.sql"

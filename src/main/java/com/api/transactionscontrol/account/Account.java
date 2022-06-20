@@ -15,9 +15,9 @@ public class Account {
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "account_id")
   private Integer id;
-  private Integer documentNumber;
+  private String documentNumber;
 
-  public void setDocumentNumber(Integer documentNumber) {
+  public void setDocumentNumber(String documentNumber) {
     this.documentNumber = documentNumber;
   }
 
@@ -29,7 +29,7 @@ public class Account {
     this.id = id;
   }
 
-  public Integer getDocumentNumber() {
+  public String getDocumentNumber() {
     return documentNumber;
   }
 }

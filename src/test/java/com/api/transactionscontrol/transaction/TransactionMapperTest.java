@@ -36,7 +36,7 @@ public class TransactionMapperTest {
   public void shouldMapTransactionDtoToEntity() {
     Account account = new Account();
     account.setId(1);
-    account.setDocumentNumber(123);
+    account.setDocumentNumber("123");
 
     OperationType operationType = new OperationType();
     operationType.setId(OperationTypeEnum.PAGAMENTO.getOperationTypeId());

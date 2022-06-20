@@ -5,13 +5,13 @@ import javax.validation.constraints.NotNull;
 
 public class TransactionRequest {
 
-  @NotNull
+  @NotNull(message = "AccountId must be not null.")
   private Integer accountId;
 
-  @NotNull
+  @NotNull(message = "OperationTypeId must be not null.")
   private Integer operationTypeId;
 
-  @NotNull
+  @NotNull(message = "Amount must be not null.")
   private BigDecimal amount;
 
   public Integer getAccountId() {

@@ -48,7 +48,7 @@ public class TransactionServiceTest {
   private Transaction buildTransaction(OperationType operationType, BigDecimal amount) {
 
     Account account = new Account();
-    account.setDocumentNumber(123);
+    account.setDocumentNumber("123");
     account.setId(1);
 
     Transaction transaction = new Transaction();

@@ -16,7 +16,7 @@ public class AccountMapperTest {
   @Test
   public void shouldMapAccountRequestToEntity() {
     AccountRequest accountRequest = new AccountRequest();
-    accountRequest.setDocumentNumber(123);
+    accountRequest.setDocumentNumber("123");
 
     Account account = accountMapper.mapDtoToEntity(accountRequest);
 

@@ -1,7 +1,7 @@
 CREATE TABLE account
 (
   account_id integer NOT NULL PRIMARY KEY,
-  document_number integer NOT NULL
+  document_number varchar(15) NOT NULL
 );
 
 CREATE TABLE operation_type
