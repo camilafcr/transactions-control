@@ -19,6 +19,10 @@ public class TransactionService {
   }
 
   private void checkTransaction(OperationType operationType, BigDecimal amount) {
+    if (amount.compareTo(BigDecimal.ZERO) == 0) {
+      throw new InvalidTransactionException("Amount must be different from '0'.");
+    }
+
     if (operationType.getId().equals(OperationTypeEnum.PAGAMENTO.getOperationTypeId())) {
       if (amount.compareTo(BigDecimal.ZERO) != 1) {
         throw new InvalidTransactionException(
