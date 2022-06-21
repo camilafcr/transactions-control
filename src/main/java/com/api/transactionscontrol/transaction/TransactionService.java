@@ -1,5 +1,6 @@
 package com.api.transactionscontrol.transaction;
 
+import com.api.transactionscontrol.account.AccountService;
 import com.api.transactionscontrol.operationtype.OperationType;
 import com.api.transactionscontrol.operationtype.OperationTypeEnum;
 import java.math.BigDecimal;
@@ -12,18 +13,27 @@ public class TransactionService {
   @Autowired
   private TransactionRepository transactionRepository;
 
-  public Transaction createTransaction(Transaction transaction) {
-    checkTransaction(transaction.getOperationType(), transaction.getAmount());
+  @Autowired
+  private AccountService accountService;
 
+  public Transaction createTransaction(Transaction transaction) {
+    checkTransaction(transaction.getAmount());
+
+    if (!transaction.getOperationType().getId()
+        .equals(OperationTypeEnum.PAGAMENTO.getOperationTypeId())) {
+      transaction.setAmount(transaction.getAmount().multiply(BigDecimal.valueOf(-1)));
+    }
+
+    accountService.updateAvailableCreditLimit(transaction.getAmount().abs(), transaction.getAccount());
     return transactionRepository.save(transaction);
   }
 
-  private void checkTransaction(OperationType operationType, BigDecimal amount) {
+  private void checkTransaction(BigDecimal amount) {
     if (amount.compareTo(BigDecimal.ZERO) == 0) {
       throw new InvalidTransactionException("Amount must be different from '0'.");
     }
 
-    if (operationType.getId().equals(OperationTypeEnum.PAGAMENTO.getOperationTypeId())) {
+    /*if (operationType.getId().equals(OperationTypeEnum.PAGAMENTO.getOperationTypeId())) {
       if (amount.compareTo(BigDecimal.ZERO) != 1) {
         throw new InvalidTransactionException(
             "OperationType is " + OperationTypeEnum.PAGAMENTO.name()
@@ -35,7 +45,7 @@ public class TransactionService {
             "OperationType is " + getOperationTypeName(operationType.getId())
                 + ", amount must be negative." );
       }
-    }
+    }*/
   }
 
   private String getOperationTypeName(Integer operationTypeId) {
