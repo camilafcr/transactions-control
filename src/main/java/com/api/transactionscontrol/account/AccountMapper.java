@@ -8,6 +8,7 @@ public class AccountMapper {
   public Account mapDtoToEntity(AccountRequest accountRequest) {
     Account account = new Account();
     account.setDocumentNumber(accountRequest.getDocumentNumber());
+    account.setAvailableCreditLimit(accountRequest.getAvailableCreditLimit());
 
     return account;
   }

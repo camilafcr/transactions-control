@@ -1,7 +1,8 @@
 CREATE TABLE account
 (
   account_id integer NOT NULL PRIMARY KEY,
-  document_number varchar(15) NOT NULL
+  document_number varchar(15) NOT NULL,
+  available_credit_limit numeric(13,2) DEFAULT 0 NOT NULL
 );
 
 CREATE TABLE operation_type

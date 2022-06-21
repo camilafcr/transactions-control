@@ -1,6 +1,7 @@
 package com.api.transactionscontrol.transaction;
 
 import com.api.transactionscontrol.account.AccountNotFoundException;
+import com.api.transactionscontrol.account.InsufficientAvailableLimitCreditException;
 import com.api.transactionscontrol.operationtype.OperationTypeNotFoundException;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import io.swagger.annotations.Api;
@@ -71,5 +72,12 @@ public class TransactionController {
     });
 
     return exceptions;
+  }
+
+  @ExceptionHandler(InsufficientAvailableLimitCreditException.class)
+  public String insufficientAvailableLimitCreditException(
+      InsufficientAvailableLimitCreditException exception
+  ) {
+    return exception.getMessage();
   }
 }
